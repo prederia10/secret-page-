@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>비밀 암호 페이지</title>
+  <style>
+    body{background:#121212;color:#eee;font-size:2.5em;
+      display:flex;flex-direction:column;align-items:center;
+      justify-content:center;height:100vh;margin:0;
+      font-family:'Segoe UI Emoji',sans-serif}
+    .line{margin:.3em 0}
+    input,button{font-size:.6em;padding:.3em 1em;
+      border-radius:6px;border:none;margin-top:.5em}
+    #secret-link{display:none;margin-top:1em}
+    a{color:#4FC3F7;text-decoration:underline;font-size:.6em}
+  </style>
+</head>
+<body>
+  <div class="line">🌙☁️✨</div><div class="line">❶❷❸❹❺</div>
+  <div class="line">🔠🔡🔢🔣🔤</div><div class="line">💊💬❔</div>
+  <div class="line">🔷🌸🔺🟢🔶</div><div class="line">🟥🟣🟦🟧⬛️⬜️🔴🟩</div>
+  <input type="text" id="pw" placeholder="비밀번호 입력 (13자)">
+  <button onclick="checkPassword()">🔓 확인</button>
+  <div id="secret-link">
+    ✅ 정답입니다! 👉
+    <a href="https://youtu.be/hrTmu1Ck33g?si=4xi6HuJyzZuVck7K" target="_blank">
+    [유튜브 영상 보기]</a>
+  </div>
+  <script>
+    function checkPassword(){
+      if(document.getElementById('pw').value.trim().toLowerCase()==='leina medicine')
+        document.getElementById('secret-link').style.display='block';
+      else alert('비밀번호가 틀렸어요!');
+    }
+  </script>
+</body>
+</html>
