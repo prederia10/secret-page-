@@ -1,49 +1,87 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<title>암호 해독 입력</title>
-<style>
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#222; color:#eee; padding:20px; }
-  label, input, button { font-size: 1rem; }
-  input { padding: 8px; width: 300px; margin-right: 10px; border-radius: 4px; border: none; }
-  button { padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; }
-  #linkBtn { margin-top: 20px; display: none; }
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>비밀 암호 페이지</title>
+  <style>
+    body {
+      background: #121212;
+      color: #eee;
+      font-size: 2.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI Emoji', sans-serif;
+      text-align: center;
+      padding: 0 1em;
+    }
+    .line { margin: .3em 0; white-space: pre-wrap; word-break: break-word; }
+    input, button {
+      font-size: .6em;
+      padding: .3em 1em;
+      border-radius: 6px;
+      border: none;
+      margin-top: .5em;
+      font-family: monospace;
+    }
+    #secret-link {
+      display: none;
+      margin-top: 1em;
+      font-size: 0.6em;
+    }
+    a {
+      color: #4FC3F7;
+      text-decoration: underline;
+      font-size: 0.6em;
+    }
+  </style>
 </head>
 <body>
+  <div class="line">(2^2 × 3) = 12☽</div>
+  <div class="line">(10 ÷ 10) = 1⋇</div>
+  <div class="line">(3 × 7) = 21❈</div>
+  <div class="line">(88 ÷ 4) = 22⌒</div>
 
-<h1>암호 해독기</h1>
-<p>암호를 계산하여 알파벳을 붙여서 입력하세요.<br>
-예: LAUVPARISINTHERAIN (공백 없이)</p>
+  <div class="line">(4^2) = 16❂</div>
+  <div class="line">(14 − 13) = 1✧</div>
+  <div class="line">(9 × 2) = 18❁</div>
+  <div class="line">(27 − 18) = 9⋆</div>
+  <div class="line">(38 − 19) = 19❉</div>
 
-<label for="answer">답 입력: </label>
-<input type="text" id="answer" autocomplete="off" />
-<button onclick="checkAnswer()">확인</button>
+  <div class="line">(27 − 18) = 9✦</div>
+  <div class="line">(28 − 14) = 14☾</div>
 
-<div id="linkBtn">
-  <button onclick="goToLink()">노래 듣기</button>
-</div>
+  <div class="line">(5 × 4) = 20♢</div>
+  <div class="line">(4 + 4) = 8♧</div>
+  <div class="line">(5) = 5☀</div>
 
-<script>
-const correctAnswer = "LAUVPARISINTHERAIN";
+  <div class="line">(6 × 3) = 18✺</div>
+  <div class="line">(2^0) = 1❖</div>
+  <div class="line">(3^2) = 9☄</div>
+  <div class="line">(7 × 2) = 14✵</div>
 
-function checkAnswer() {
-  const userInput = document.getElementById('answer').value.trim().toUpperCase();
-  if(userInput === correctAnswer) {
-    // 정답 맞으면 링크 버튼 보이기
-    document.getElementById('linkBtn').style.display = 'block';
-    alert("정답입니다! 아래 버튼을 눌러 노래를 들어보세요.");
-  } else {
-    alert("틀렸습니다. 다시 시도해 주세요.");
-    document.getElementById('linkBtn').style.display = 'none';
-  }
-}
+  <input type="text" id="pw" placeholder="비밀번호 입력">
+  <button onclick="checkPassword()">🔓 확인</button>
 
-function goToLink() {
-  window.location.href = "https://youtu.be/JZELmUooBlY?si=H2yLdTGE9BuNjg4y";
-}
-</script>
+  <div id="secret-link">
+    ✅ 정답입니다! 👉
+    <a href="https://youtu.be/JZELmUooBlY?si=H2yLdTGE9BuNjg4y" target="_blank">
+      [유튜브 영상 보기]
+    </a>
+  </div>
 
+  <script>
+    function checkPassword() {
+      if (document.getElementById('pw').value.trim().toUpperCase() === 'LAUVPARISINTHERAIN') {
+        document.getElementById('secret-link').style.display = 'block';
+      } else {
+        alert('비밀번호가 틀렸어요!');
+      }
+    }
+  </script>
 </body>
 </html>
