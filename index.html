@@ -8,35 +8,47 @@
     body {
       background: #121212;
       color: #eee;
-      font-size: 2.5em;
+      font-size: 1.5em; /* 폰트 크기 줄임 */
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start; /* 내용 위쪽에 정렬 */
       height: 100vh;
       margin: 0;
+      padding: 2em;
       font-family: 'Segoe UI Emoji', sans-serif;
       text-align: center;
-      padding: 0 1em;
+      overflow-y: auto; /* 스크롤 가능하게 */
     }
-    .line { margin: .3em 0; white-space: pre-wrap; word-break: break-word; }
+
+    .line {
+      margin: 0.3em 0;
+      word-break: break-word; /* 긴 줄도 줄바꿈 가능 */
+      white-space: normal;
+    }
+
     input, button {
-      font-size: .6em;
-      padding: .3em 1em;
+      font-size: 1em;
+      padding: 0.3em 1em;
       border-radius: 6px;
       border: none;
-      margin-top: .5em;
-      font-family: monospace;
+      margin-top: 0.5em;
     }
+
+    input {
+      width: 500px;
+      max-width: 90%;
+    }
+
     #secret-link {
       display: none;
       margin-top: 1em;
-      font-size: 0.6em;
     }
+
     a {
       color: #4FC3F7;
       text-decoration: underline;
-      font-size: 0.6em;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -45,26 +57,22 @@
   <div class="line">(10 ÷ 10) = 1⋇</div>
   <div class="line">(3 × 7) = 21❈</div>
   <div class="line">(88 ÷ 4) = 22⌒</div>
-
   <div class="line">(4^2) = 16❂</div>
   <div class="line">(14 − 13) = 1✧</div>
   <div class="line">(9 × 2) = 18❁</div>
   <div class="line">(27 − 18) = 9⋆</div>
   <div class="line">(38 − 19) = 19❉</div>
-
   <div class="line">(27 − 18) = 9✦</div>
   <div class="line">(28 − 14) = 14☾</div>
-
   <div class="line">(5 × 4) = 20♢</div>
   <div class="line">(4 + 4) = 8♧</div>
   <div class="line">(5) = 5☀</div>
-
   <div class="line">(6 × 3) = 18✺</div>
   <div class="line">(2^0) = 1❖</div>
   <div class="line">(3^2) = 9☄</div>
   <div class="line">(7 × 2) = 14✵</div>
 
-  <input type="text" id="pw" placeholder="비밀번호 입력">
+  <input type="text" id="pw" placeholder="비밀번호 입력 (공백 없이)">
   <button onclick="checkPassword()">🔓 확인</button>
 
   <div id="secret-link">
@@ -76,7 +84,10 @@
 
   <script>
     function checkPassword() {
-      if (document.getElementById('pw').value.trim().toUpperCase() === 'LAUVPARISINTHERAIN') {
+      const answer = 'LAUVPARISINTHERAIN'; // 대문자, 공백 없음
+      const userInput = document.getElementById('pw').value.trim().toUpperCase();
+
+      if (userInput === answer) {
         document.getElementById('secret-link').style.display = 'block';
       } else {
         alert('비밀번호가 틀렸어요!');
